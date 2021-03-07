@@ -1,0 +1,36 @@
+﻿@model MVCCRUD.Models.ViewModels.TablaViewModel
+@{
+    ViewBag.Title = "Editar";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<!--helper para crear un formulario html sin la form tag, recibe nombre de metodo, controlador y tipo de peticion-->
+@using (Html.BeginForm("Editar", "User", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-12">
+            @Html.HiddenFor(d=>d.id)
+            <div>
+                @Html.LabelFor(d => d.nombre)
+                @Html.TextBoxFor(d => d.nombre, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.nombre, null, new { @class = "errores" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.correo)
+                @Html.TextBoxFor(d => d.correo, "", new { @class = "form-control" })<br />
+                @Html.ValidationMessageFor(d => d.correo, null, new { @class = "errores" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.fechaNacimiento)
+                @Html.EditorFor(d => d.fechaNacimiento, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.fechaNacimiento, null, new { @class = "errores" })
+            </div>
+            <br />
+            <div style="text-align:right;">
+                <input value="Guardar" class="btn btn-primary" type="submit" />
+            </div>
+
+        </div>
+    </div>
+}
